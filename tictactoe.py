@@ -105,3 +105,51 @@ def isBoardFull(board):
     return True
 
 print('Welcome to Tic Tac Toe!')
+
+while True:
+    theBoard = [' '] * 10
+    playerLetter, computerLetter = inputPlayerLetter()
+    turn = whoGoesFirst()
+    print('The ' + turn + ' will go first.')
+    gameIsPlaying = True
+
+    while gameIsPlaying:
+        if turn == 'player':
+            drawBoard(theBoard)
+            move = getPlayerMove(theBoard)
+            makeMove(theBoard, playerLetter, move)
+
+            if isWinner(theBoard, playerLetter):
+                drawBoard(theBoard)
+                print('You win!')
+                gameIsPlaying = False
+
+            else:
+                if isBoardFull(theBoard):
+                    drawBoard(theBoard)
+                    print("Tie game!")
+                    break
+                else:
+                    turn = 'computer'
+        
+        else:
+            move = getComputerMove(theBoard, computerLetter)
+            makeMove(theBoard, computerLetter, move)
+
+            if isWinner(theBoard, computerLetter):
+                drawBoard(theBoard)
+                print('Computer wins!')
+                gameIsPlaying = False
+            else:
+                if isBoardFull(theBoard):
+                    drawBoard(theBoard)
+                    print('Tie!')
+                    break
+                else:
+                    turn = 'player'
+
+
+    print('Play again? (yes or no')
+    if not input().lower().startswith('y'):
+        break
+
