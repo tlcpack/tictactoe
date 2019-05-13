@@ -48,7 +48,7 @@ def getBoardCopy(board):
     return boardCopy
 
 def isSpaceFree(board, move):
-    returnboard[move] == ' '
+    return board[move] == ' '
 
 def getPlayerMove(board):
     move = ' ' 
@@ -143,13 +143,13 @@ while True:
             else:
                 if isBoardFull(theBoard):
                     drawBoard(theBoard)
-                    print('Tie!')
+                    print('Tie game!')
                     break
                 else:
                     turn = 'player'
 
 
-    print('Play again? (yes or no')
+    print('Play again? (yes or no)')
     if not input().lower().startswith('y'):
         break
 
